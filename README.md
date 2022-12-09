@@ -1,34 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prismic + Next.js Blog Starter
 
-## Getting Started
+This sample blog is an excellent starting point to explore [Next.js][nextjs] and [Prismic][prismic]. Get it up and running in minutes. Modify and adapt it to your liking; it's all yours!
 
-First, run the development server:
+- **Demo**: [Open live demo][live-demo]
+- **Learn more about Prismic and Next.js**: [Prismic Next.js Documentation][prismic-docs]
 
-```bash
-npm run dev
-# or
-yarn dev
+&nbsp;
+
+<img src="https://user-images.githubusercontent.com/8601064/163122284-5b80a81e-a4fd-482e-9bd5-99b22f61175f.png" alt="Screenshots of the site seen on deskop and mobile browsers" />
+
+&nbsp;
+
+## 🚀 Quick Start
+
+To start a new project using this starter, run the following commands in your terminal:
+
+```sh
+npx degit prismicio-community/nextjs-starter-prismic-blog your-project-name
+cd your-project-name
+npx @slicemachine/init
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The commands will do the following:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Start a new Next.js project using this starter.
+2. Ask you to log in to Prismic or [create an account][prismic-sign-up].
+3. Create a new Prismic content repository with sample content.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+When you're ready to start your project, run the following command:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+npm run dev
+```
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+To learn how to work with your new project, [**see this starter's docs**][starter-docs].
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To learn more about working with Prismic, [**see the Prismic docs**][prismic-docs].
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+```
+Copyright 2013-2022 Prismic <contact@prismic.io> (https://prismic.io)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+[prismic]: https://prismic.io/
+[prismic-docs]: https://prismic.io/docs/technologies/nextjs
+[prismic-sign-up]: https://prismic.io/dashboard/signup
+[starter-docs]: ./docs/README.md
+[nextjs]: https://nextjs.org/
+[live-demo]: https://nextjs-starter-prismic-blog.vercel.app/

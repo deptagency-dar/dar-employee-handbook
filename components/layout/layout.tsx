@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from "react";
-import Sidebar, { SidebarItem } from "./Sidebar";
-import { Footer } from "./footer";
+import React from "react";
+import { Footer } from "./Footer";
+import Sidebar from "./Sidebar";
 
 const footer = {
   copyrightOwner: "GEEK SG",
@@ -9,21 +9,14 @@ const footer = {
   instagram: "https://www.instagram.com/geek.sg/",
 };
 
-interface Props {
-  children: React.ReactNode;
-  items: SidebarItem[];
-}
-
-export const Layout: React.FC<Props> = ({ children, items }) => {
+export const Layout = ({ navigation, settings, children }) => {
   return (
-    <>
-      <Sidebar sidebarItems={items} />
-      <div className="min-h-screen ml-60">
+    <div className="text-slate-700">
+      <Sidebar navigation={navigation} settings={settings} />
+      <div className="ml-60 min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
         <Footer {...footer} />
       </div>
-    </>
+    </div>
   );
 };
-
-export default Layout;
