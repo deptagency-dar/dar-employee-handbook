@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import deptLogo from "./dept-logo.svg";
 import * as prismicH from "@prismicio/helpers";
