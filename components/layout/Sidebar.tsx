@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import Image from "next/image";
-import deptLogo from "./dept-logo.svg";
+import deptLogo from "@images/dept-logo.svg";
 import * as prismicH from "@prismicio/helpers";
 import { PrismicLink, PrismicText } from "@prismicio/react";
 
@@ -29,11 +29,6 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ navigation }) => {
         </div>
       </PrismicLink>
       <div className="list-none">
-        <NavItem>
-          <PrismicLink href="/">
-            <PrismicText field={navigation.data.homepageLabel} />
-          </PrismicLink>
-        </NavItem>
         {navigation.data?.links.map((item) => (
           <NavItem key={prismicH.asText(item.label)}>
             <PrismicLink field={item.link}>
