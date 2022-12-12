@@ -32,6 +32,10 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ navigation }) => {
           🇦🇷
         </div>
       </PrismicLink>
+      <div className="mb-10 text-center">
+        <p>Welcome</p>
+        <span>{session?.user?.name}</span>
+      </div>
       <div className="list-none">
         {navigation.data?.links.map((item) => (
           <NavItem key={prismicH.asText(item.label)}>
@@ -41,9 +45,13 @@ const Sidebar: FunctionComponent<SidebarProps> = ({ navigation }) => {
           </NavItem>
         ))}
       </div>
-      <div>
-        <p>Welcome {session.user?.email}</p>
-        <button onClick={() => signOut()}>Sign Out</button>
+      <div className="mt-5">
+        <button
+          onClick={() => signOut()}
+          className="flex h-10 w-full items-center justify-center rounded-md border border-black bg-black text-sm text-white transition-all hover:bg-white hover:text-black focus:outline-none"
+        >
+          <p>Sign Out</p>
+        </button>
       </div>
     </nav>
   );

@@ -5,7 +5,7 @@ import * as prismicH from "@prismicio/helpers";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { createClient } from "../prismicio";
 import { Heading } from "../components/Heading";
-import { Layout } from "../components/layout";
+import Image from "next/image";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -80,33 +80,41 @@ const Article = ({ article }) => {
 
 const Index = ({ articles, navigation, settings }) => {
   const { data: session } = useSession();
-
-  return session ? (
-    <div>
-      <p>Welcome {session.user?.email}</p>
-      <button onClick={() => signOut()}>Sign Out</button>
-    </div>
-  ) : (
-    <div>
-      <p>login please</p>
-      <button onClick={() => signIn()}>Log In</button>
+  // return session ? (
+  //   <div>
+  //     <p>Welcome {session.user?.email}</p>
+  //     <button onClick={() => signOut()}>Sign Out</button>
+  //   </div>
+  // ) : (
+  //   <div>
+  //     <p>login please</p>
+  //     <button onClick={() => signIn()}>Log In</button>
+  //   </div>
+  // );
+  return (
+    <div className="flex h-screen w-screen items-center justify-center bg-gray-50">
+      <div className="z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-gray-100 shadow-xl">
+        <div className="flex flex-col items-center justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center sm:px-16">
+          <Image
+            src="/images/dept-logo.svg"
+            alt="Logo"
+            width={80}
+            height={80}
+          />
+          <h3 className="text-xl font-semibold">Welcome</h3>
+          <p className="text-md text-gray-500">
+            Use your DEPT Agency google account to sign in
+          </p>
+          <button
+            onClick={() => signIn()}
+            className="flex h-10 w-full items-center justify-center rounded-md border border-black bg-black text-sm text-white transition-all hover:bg-white hover:text-black focus:outline-none"
+          >
+            <p>Sign In</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
-  // return (
-  //   <Layout navigation={navigation}>
-  //     <Head>
-  //       <title>{prismicH.asText(settings.data.name)}</title>
-  //     </Head>
-  //     <div>
-  //       home
-  //       {/* <ul className="grid grid-cols-1 gap-16">
-  //     {articles.map((article) => (
-  //       <Article key={article.id} article={article} />
-  //       ))}
-  //     </ul> */}
-  //     </div>
-  //   </Layout>
-  // );
 };
 
 export default Index;
