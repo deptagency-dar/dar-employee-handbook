@@ -1,18 +1,9 @@
 import Head from "next/head";
-import {
-  PrismicLink,
-  PrismicText,
-  PrismicRichText,
-  SliceZone,
-} from "@prismicio/react";
+import { PrismicText, PrismicRichText } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
+import { Layout } from "@components";
 
 import { createClient } from "../../prismicio";
-import { components } from "../../slices";
-import { Layout } from "../../components/Layout";
-import { Heading } from "../../components/Heading";
-import { HorizontalDivider } from "../../components/HorizontalDivider";
-import { Bounded } from "../../components/Bounded";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -20,30 +11,11 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const LatestArticle = ({ article }) => {
-  const date = prismicH.asDate(
-    article.data.publishDate || article.first_publication_date
-  );
-
-  return (
-    <li>
-      <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
-        <PrismicLink document={article}>
-          <PrismicText field={article.data.title} />
-        </PrismicLink>
-      </h1>
-      <p className="font-serif italic tracking-tighter text-slate-500">
-        {dateFormatter.format(date)}
-      </p>
-    </li>
-  );
-};
-
 const Article = ({ article, navigation, settings }) => {
   const date = prismicH.asDate(
     article.data.publishDate || article.first_publication_date
   );
-  console.log(article);
+
   return (
     <>
       <Head>
