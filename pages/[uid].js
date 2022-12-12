@@ -5,10 +5,11 @@ import * as prismicH from "@prismicio/helpers";
 import { createClient } from "../prismicio";
 import { components } from "../slices";
 import { Layout } from "../components/Layout";
+import { signOut } from "next-auth/react";
 
 const Page = ({ page, navigation, settings }) => {
   return (
-    <>
+    <Layout navigation={navigation}>
       <Head>
         <title>
           {prismicH.asText(page.data.title)} |{" "}
@@ -16,7 +17,7 @@ const Page = ({ page, navigation, settings }) => {
         </title>
       </Head>
       <SliceZone slices={page.data.slices} components={components} />
-    </>
+    </Layout>
   );
 };
 

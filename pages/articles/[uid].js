@@ -45,7 +45,7 @@ const Article = ({ article, navigation, settings }) => {
   );
   console.log(article);
   return (
-    <>
+    <Layout navigation={navigation}>
       <Head>
         <title>
           {prismicH.asText(article.data.title)} |{" "}
@@ -67,7 +67,7 @@ const Article = ({ article, navigation, settings }) => {
           </div>
         </div>
       </article>
-    </>
+    </Layout>
   );
 };
 

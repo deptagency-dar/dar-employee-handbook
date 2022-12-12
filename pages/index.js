@@ -2,9 +2,10 @@ import Head from "next/head";
 import { PrismicLink, PrismicText } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import * as prismicH from "@prismicio/helpers";
-
+import { useSession, signIn, signOut } from "next-auth/react";
 import { createClient } from "../prismicio";
 import { Heading } from "../components/Heading";
+import { Layout } from "../components/layout";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -78,21 +79,34 @@ const Article = ({ article }) => {
 };
 
 const Index = ({ articles, navigation, settings }) => {
-  return (
-    <>
-      <Head>
-        <title>{prismicH.asText(settings.data.name)}</title>
-      </Head>
-      <div>
-        home
-        {/* <ul className="grid grid-cols-1 gap-16">
-          {articles.map((article) => (
-            <Article key={article.id} article={article} />
-          ))}
-        </ul> */}
-      </div>
-    </>
+  const { data: session } = useSession();
+
+  return session ? (
+    <div>
+      <p>Welcome {session.user?.email}</p>
+      <button onClick={() => signOut()}>Sign Out</button>
+    </div>
+  ) : (
+    <div>
+      <p>login please</p>
+      <button onClick={() => signIn()}>Log In</button>
+    </div>
   );
+  // return (
+  //   <Layout navigation={navigation}>
+  //     <Head>
+  //       <title>{prismicH.asText(settings.data.name)}</title>
+  //     </Head>
+  //     <div>
+  //       home
+  //       {/* <ul className="grid grid-cols-1 gap-16">
+  //     {articles.map((article) => (
+  //       <Article key={article.id} article={article} />
+  //       ))}
+  //     </ul> */}
+  //     </div>
+  //   </Layout>
+  // );
 };
 
 export default Index;
