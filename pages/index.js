@@ -4,8 +4,6 @@ import { PrismicNextImage } from "@prismicio/next";
 import * as prismicH from "@prismicio/helpers";
 
 import { createClient } from "../prismicio";
-import { Layout } from "../components/layout";
-import { Bounded } from "../components/Bounded";
 import { Heading } from "../components/Heading";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -81,9 +79,7 @@ const Article = ({ article }) => {
 
 const Index = ({ articles, navigation, settings }) => {
   return (
-    <Layout
-      navigation={navigation}
-    >
+    <>
       <Head>
         <title>{prismicH.asText(settings.data.name)}</title>
       </Head>
@@ -95,7 +91,7 @@ const Index = ({ articles, navigation, settings }) => {
           ))}
         </ul> */}
       </div>
-    </Layout>
+    </>
   );
 };
 

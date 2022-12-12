@@ -45,12 +45,7 @@ const Article = ({ article, navigation, settings }) => {
   );
   console.log(article);
   return (
-    <Layout
-      withHeaderDivider={false}
-      withProfile={false}
-      navigation={navigation}
-      settings={settings}
-    >
+    <>
       <Head>
         <title>
           {prismicH.asText(article.data.title)} |{" "}
@@ -72,7 +67,7 @@ const Article = ({ article, navigation, settings }) => {
           </div>
         </div>
       </article>
-    </Layout>
+    </>
   );
 };
 

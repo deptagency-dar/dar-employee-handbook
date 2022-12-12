@@ -8,7 +8,7 @@ import { Layout } from "../components/Layout";
 
 const Page = ({ page, navigation, settings }) => {
   return (
-    <Layout navigation={navigation} settings={settings}>
+    <>
       <Head>
         <title>
           {prismicH.asText(page.data.title)} |{" "}
@@ -16,7 +16,7 @@ const Page = ({ page, navigation, settings }) => {
         </title>
       </Head>
       <SliceZone slices={page.data.slices} components={components} />
-    </Layout>
+    </>
   );
 };
 
