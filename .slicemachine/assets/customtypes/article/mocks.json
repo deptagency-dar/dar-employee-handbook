@@ -14,11 +14,11 @@
     "title": [
       {
         "type": "heading1",
-        "text": "Captured",
+        "text": "Parallel",
         "spans": []
       }
     ],
-    "publishDate": "2013-08-12",
+    "publishDate": "2014-04-15",
     "featuredImage": {
       "dimensions": {
         "width": 2000,
@@ -26,8 +26,15 @@
       },
       "alt": null,
       "copyright": null,
-      "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f"
+      "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
     },
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Qui voluptate Lorem labore ea et. Consequat elit ea quis consequat commodo laboris cillum ipsum irure aute elit.",
+        "spans": []
+      }
+    ],
     "slices": []
   }
 }

@@ -1,13 +1,18 @@
 import Head from "next/head";
-import { PrismicLink, PrismicText, SliceZone } from "@prismicio/react";
+import {
+  PrismicLink,
+  PrismicText,
+  PrismicRichText,
+  SliceZone,
+} from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
 
 import { createClient } from "../../prismicio";
 import { components } from "../../slices";
 import { Layout } from "../../components/Layout";
-import { Bounded } from "../../components/Bounded";
 import { Heading } from "../../components/Heading";
 import { HorizontalDivider } from "../../components/HorizontalDivider";
+import { Bounded } from "../../components/Bounded";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -34,11 +39,11 @@ const LatestArticle = ({ article }) => {
   );
 };
 
-const Article = ({ article, latestArticles, navigation, settings }) => {
+const Article = ({ article, navigation, settings }) => {
   const date = prismicH.asDate(
     article.data.publishDate || article.first_publication_date
   );
-
+  console.log(article);
   return (
     <Layout
       withHeaderDivider={false}
@@ -52,42 +57,21 @@ const Article = ({ article, latestArticles, navigation, settings }) => {
           {prismicH.asText(settings.data.name)}
         </title>
       </Head>
-      <Bounded>
-        <PrismicLink
-          href="/"
-          className="font-semibold tracking-tight text-slate-400"
-        >
-          &larr; Back to articles
-        </PrismicLink>
-      </Bounded>
       <article>
-        <Bounded className="pb-0">
-          <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
-            <PrismicText field={article.data.title} />
-          </h1>
-          <p className="font-serif italic tracking-tighter text-slate-500">
-            {dateFormatter.format(date)}
-          </p>
-        </Bounded>
-        <SliceZone slices={article.data.slices} components={components} />
-      </article>
-      {latestArticles.length > 0 && (
-        <Bounded>
-          <div className="grid grid-cols-1 justify-items-center gap-16 md:gap-24">
-            <HorizontalDivider />
-            <div className="w-full">
-              <Heading size="2xl" className="mb-10">
-                Latest articles
-              </Heading>
-              <ul className="grid grid-cols-1 gap-12">
-                {latestArticles.map((article) => (
-                  <LatestArticle key={article.id} article={article} />
-                ))}
-              </ul>
+        <div className="flex flex-col items-center pt-12">
+          <div className="max-w-2xl pb-0">
+            <div className="mb-12">
+              <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
+                <PrismicText field={article.data.title} />
+              </h1>
+              <p className="font-serif italic tracking-tighter text-slate-500">
+                {dateFormatter.format(date)}
+              </p>
             </div>
+            <PrismicRichText field={article.data.content} />
           </div>
-        </Bounded>
-      )}
+        </div>
+      </article>
     </Layout>
   );
 };

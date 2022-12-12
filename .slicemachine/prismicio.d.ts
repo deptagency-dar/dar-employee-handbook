@@ -42,6 +42,17 @@ interface ArticleDocumentData {
      */
     featuredImage: prismicT.ImageField<never>;
     /**
+     * Content field in *Article*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    content: prismicT.RichTextField;
+    /**
      * Slice Zone field in *Article*
      *
      * - **Field Type**: Slice Zone
