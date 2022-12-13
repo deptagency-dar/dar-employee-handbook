@@ -1,8 +1,7 @@
 import Head from "next/head";
 import { PrismicText, PrismicRichText } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
-import { Layout } from "@components";
-
+import { Layout } from "@components/layout";
 import { createClient } from "../../prismicio";
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -24,21 +23,23 @@ const Article = ({ article, navigation, settings }) => {
           {prismicH.asText(settings.data.name)}
         </title>
       </Head>
-      <article>
-        <div className="flex flex-col items-center pt-12">
-          <div className="max-w-2xl pb-0">
-            <div className="mb-12">
-              <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
-                <PrismicText field={article.data.title} />
-              </h1>
-              <p className="font-serif italic tracking-tighter text-slate-500">
-                {dateFormatter.format(date)}
-              </p>
+      <Layout navigation={navigation}>
+        <article>
+          <div className="flex flex-col items-center pt-12">
+            <div className="max-w-2xl pb-0">
+              <div className="mb-12">
+                <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
+                  <PrismicText field={article.data.title} />
+                </h1>
+                <p className="font-serif italic tracking-tighter text-slate-500">
+                  {dateFormatter.format(date)}
+                </p>
+              </div>
+              <PrismicRichText field={article.data.content} />
             </div>
-            <PrismicRichText field={article.data.content} />
           </div>
-        </div>
-      </article>
+        </article>
+      </Layout>
     </>
   );
 };

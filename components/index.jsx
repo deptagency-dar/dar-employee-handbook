@@ -1,4 +1,4 @@
-export * from "./layout/";
+export * from "./layout";
 export * from "./Bounded";
 export * from "./Heading";
 export * from "./HorizontalDivider";

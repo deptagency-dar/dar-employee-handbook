@@ -3,8 +3,6 @@ import Head from "next/head";
 import * as prismicH from "@prismicio/helpers";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/router";
-
-import { createClient } from "../prismicio";
 import { Layout } from "@components/layout";
 
 const Index = ({ navigation, settings }) => {
@@ -29,16 +27,4 @@ const Index = ({ navigation, settings }) => {
 
 export default Index;
 
-export async function getStaticProps({ previewData }) {
-  const client = createClient({ previewData });
-
-  const navigation = await client.getSingle("navigation");
-  const settings = await client.getSingle("settings");
-
-  return {
-    props: {
-      navigation,
-      settings,
-    },
-  };
-}
+export { getStaticProps } from "@lib/getStaticProps";
