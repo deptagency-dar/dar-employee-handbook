@@ -19,9 +19,9 @@ export default () => {
         <Image className="w-32" src={deptLogo} alt="Dept" />
         🇦🇷
       </div>
-      <Button>
-        <a href="/api/auth/login">Login</a>
-      </Button>
+      <a href="/api/auth/login">
+        <Button>Login</Button>
+      </a>
     </div>
   );
 };

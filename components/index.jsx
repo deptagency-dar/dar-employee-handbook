@@ -4,3 +4,4 @@ export * from "./Heading";
 export * from "./HorizontalDivider";
 export * from "./WithPrivateRoutes";
 export * from "./Button";
+export * from "./Loading";

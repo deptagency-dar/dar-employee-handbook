@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { PrismicText, PrismicRichText } from "@prismicio/react";
 import * as prismicH from "@prismicio/helpers";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import { Layout } from "@components/layout";
 import { createClient } from "../../prismicio";
 
@@ -44,7 +45,7 @@ const Article = ({ article, navigation, settings }) => {
   );
 };
 
-export default Article;
+export default withPageAuthRequired(Article);
 
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });

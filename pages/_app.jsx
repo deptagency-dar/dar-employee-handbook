@@ -3,6 +3,8 @@ import Link from "next/link";
 import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { repositoryName } from "../prismicio";
 
@@ -16,6 +18,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </PrismicPreview>
       </PrismicProvider>
+      <ToastContainer />
     </UserProvider>
   );
 }
