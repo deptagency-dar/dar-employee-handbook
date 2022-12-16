@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { FC } from "react";
 import Image from "next/image";
 import deptLogo from "@images/dept-logo.svg";
 import * as prismicH from "@prismicio/helpers";
 import { Button } from "@components/Button";
 import { PrismicLink, PrismicText } from "@prismicio/react";
+import { NavigationDocument } from "types.generated";
 
 export interface SidebarItem {
   title: string;
@@ -11,16 +12,22 @@ export interface SidebarItem {
 }
 
 export interface SidebarProps {
-  sidebarItems: SidebarItem[];
+  // sidebarItems: SidebarItem[];
+  navigation: NavigationDocument;
 }
 
-const NavItem = ({ children }) => {
+interface NavItemProps {
+  children: React.ReactNode;
+}
+
+
+const NavItem: FC<NavItemProps> = ({ children }) => {
   return (
-    <li className="font-semibold tracking-tight text-slate-800 ">{children}</li>
+    <li className="font-semibold tracking-normal text-slate-800 leading-tight py-1">{children}</li>
   );
 };
 
-const Sidebar: FunctionComponent<SidebarProps> = ({ navigation }) => {
+const Sidebar: FC<SidebarProps> = ({ navigation }) => {
   return (
     <nav className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-12 py-12 shadow-lg">
       <div>

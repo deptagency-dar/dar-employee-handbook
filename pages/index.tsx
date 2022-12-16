@@ -1,9 +1,13 @@
 import Head from "next/head";
 import * as prismicH from "@prismicio/helpers";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
-import { Layout } from "@components/Layout";
+import { Layout } from "../components/layout/PageLayout";
+import type { InferGetStaticPropsType } from 'next';
+import { getStaticProps } from "@lib/getStaticProps";
 
-const Index = ({ navigation, settings }) => {
+type IndexProps = InferGetStaticPropsType<typeof getStaticProps>;
+
+const Index = ({ navigation, settings }: IndexProps) => {
   return (
     <Layout navigation={navigation}>
       <Head>
@@ -16,4 +20,4 @@ const Index = ({ navigation, settings }) => {
 
 export default withPageAuthRequired(Index);
 
-export { getStaticProps } from "@lib/getStaticProps";
+export { getStaticProps };

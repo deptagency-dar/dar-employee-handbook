@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 export default () => {
   const router = useRouter();
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
 
   useEffect(() => {
     user && router.push("/");

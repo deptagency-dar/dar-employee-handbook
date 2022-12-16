@@ -1,8 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
+import { NavigationDocument } from "types.generated";
 import { Footer } from "./Footer";
 import Sidebar from "./Sidebar";
 
-export const Layout = ({ navigation, children }) => {
+interface Props {
+  children: React.ReactNode;
+  navigation: NavigationDocument;
+}
+
+export const Layout: FC<Props> = ({ navigation, children }) => {
   return (
     <div className="text-slate-700">
       <Sidebar navigation={navigation} />
