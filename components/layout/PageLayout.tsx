@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { NavigationDocument } from "types.generated";
+import { NavigationDocument } from "types/types.generated";
 import { Footer } from "./Footer";
 import Sidebar from "./Sidebar";
 

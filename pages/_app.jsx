@@ -1,3 +1,4 @@
+import { createClient } from "../prismicio";
 import Link from "next/link";
 import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
@@ -6,8 +7,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { repositoryName } from "../prismicio";
-import useLoadingPage from "../hooks/useLoadingPage";
-import SpinnerArea from '../components/SpinerArea';
+import useLoadingPage from "@hooks/useLoadingPage";
+import SpinnerArea from '@components/SpinerArea';
 
 import "../styles/globals.css";
 

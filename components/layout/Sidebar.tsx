@@ -4,7 +4,7 @@ import deptLogo from "@images/dept-logo.svg";
 import * as prismicH from "@prismicio/helpers";
 import { Button } from "@components/Button";
 import { PrismicLink, PrismicText } from "@prismicio/react";
-import { NavigationDocument } from "types.generated";
+import { NavigationDocument } from "types/types.generated";
 
 export interface SidebarItem {
   title: string;

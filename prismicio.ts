@@ -8,12 +8,8 @@ import sm from "./sm.json";
  */
 export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint);
 
-/**
- * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.
- *
- * @type {prismic.ClientConfig['routes']}
- */
-const routes = [
+
+const routes: prismic.ClientConfig['routes'] = [
   {
     type: "article",
     path: "/articles/:uid",
@@ -24,13 +20,7 @@ const routes = [
   },
 ];
 
-/**
- * Creates a Prismic client for the project's repository. The client is used to
- * query content from the Prismic API.
- *
- * @param config {prismicNext.CreateClientConfig} - A configuration object to
- */
-export const createClient = ({ previewData, req, ...config } = {}) => {
+export const createClient = ({ previewData, req, ...config }: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(sm.apiEndpoint, {
     routes,
     ...config,
