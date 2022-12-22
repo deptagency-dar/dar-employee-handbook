@@ -1,6 +1,4 @@
-import React, { FunctionComponent } from "react";
-
-export const Footer: FunctionComponent = () => (
+export const Footer = () => (
   <div className="bg-white">
     <div className="mx-auto max-w-screen-xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
       <div className="flex justify-center md:order-2">

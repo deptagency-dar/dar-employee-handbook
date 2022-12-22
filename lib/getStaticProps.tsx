@@ -1,5 +1,5 @@
 import { GetStaticPropsContext } from "next";
-import { NavigationDocument, SettingsDocument } from "types.generated";
+import { NavigationDocument, SettingsDocument } from "../types/types.generated";
 import { createClient } from "../prismicio";
 
 export interface IndexPageProps {

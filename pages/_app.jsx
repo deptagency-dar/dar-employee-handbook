@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { repositoryName } from "../prismicio";
 import useLoadingPage from "@hooks/useLoadingPage";
-import SpinnerArea from '@components/SpinerArea';
+import SpinnerArea from '@components/SpinnerArea';
 
 import "../styles/globals.css";
 

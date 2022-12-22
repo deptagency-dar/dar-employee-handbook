@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { Loading } from "./Loading";
 
 export const Spinner = () => {
     return (
@@ -9,16 +9,16 @@ export const Spinner = () => {
         </div>
     );
 };
-
 interface Props {
     children: React.ReactNode;
     loading: boolean;
 }
-const SpinnerArea: FC<Props> = ({ loading = false, children }) => (
+
+const SpinnerArea = ({ loading = false, children }: Props) => (
     <>
         {loading ? (
             <>
-                <Spinner />
+                <Loading />
                 <div className="opacity-25">{children}</div>
             </>
         ) : children}
