@@ -1,4 +1,6 @@
-export default async function handler(req, res) {
+import { NextApiHandler } from "next";
+
+const handler: NextApiHandler = (req, res) => {
   // Get data submitted in request's body.
   const body = req.body;
 
@@ -22,3 +24,5 @@ export default async function handler(req, res) {
 
   res.redirect(302, "/");
 }
+
+export default handler;
