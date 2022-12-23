@@ -1,16 +1,16 @@
 import { NextApiHandler, NextApiRequest } from "next";
 
-interface CustomRequestBody {
+interface ContactRequestBody {
   name: string;
   email: string;
   message: string;
 }
 
-interface CustomApiRequest extends NextApiRequest {
-  body: CustomRequestBody;
+interface ContactApiRequest extends NextApiRequest {
+  body: ContactRequestBody;
 }
 
-const handler: NextApiHandler = (req: CustomApiRequest, res) => {
+const handler: NextApiHandler = (req: ContactApiRequest, res) => {
   // Get data submitted in request's body.
   const { body } = req;
   const { name, email, message } = body;
