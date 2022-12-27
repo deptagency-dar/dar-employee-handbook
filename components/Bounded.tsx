@@ -6,7 +6,7 @@ interface Props {
   as: keyof JSX.IntrinsicElements;
   size: BoundedSize;
   children: React.ReactNode;
-  className: string;
+  className?: string;
 }
 
 export const Bounded = ({

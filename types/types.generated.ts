@@ -53,6 +53,17 @@ interface ArticleDocumentData {
      */
     content: prismicT.RichTextField;
     /**
+     * author field in *Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.author
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    author: prismicT.KeyTextField;
+    /**
      * Slice Zone field in *Article*
      *
      * - **Field Type**: Slice Zone

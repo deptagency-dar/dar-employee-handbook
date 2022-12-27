@@ -25,15 +25,15 @@
       }
     },
     "article": {
-      "title": {
-        "config": {
-          "patternType": "HEADING",
-          "blocks": 1
-        }
-      },
       "content": {
         "config": {
           "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "title": {
+        "config": {
+          "patternType": "HEADING",
           "blocks": 1
         }
       }
@@ -63,7 +63,8 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "post": {}
   },
   "slices": {
     "Text": {

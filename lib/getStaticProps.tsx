@@ -10,6 +10,14 @@ export interface IndexPageProps {
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({ previewData });
 
+  const latestArticles = await client.getAllByType("article", {
+    limit: 3,
+    orderings: [
+      { field: "my.article.publishDate", direction: "desc" },
+      { field: "document.first_publication_date", direction: "desc" },
+    ],
+  });
+  
   const navigation = await client.getSingle("navigation");
   const settings = await client.getSingle("settings");
 
@@ -17,6 +25,7 @@ export async function getStaticProps({ previewData }: GetStaticPropsContext) {
     props: {
       navigation,
       settings,
+      latestArticles
     },
   };
 }
