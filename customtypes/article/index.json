@@ -49,10 +49,13 @@
         }
       },
       "author": {
-        "type": "Text",
+        "type": "Link",
         "config": {
-          "label": "author",
-          "placeholder": ""
+          "label": "Author",
+          "select": "document",
+          "customtypes": [
+            "author"
+          ]
         }
       },
       "slices": {

@@ -64,7 +64,8 @@
         }
       }
     },
-    "post": {}
+    "post": {},
+    "author": {}
   },
   "slices": {
     "Text": {

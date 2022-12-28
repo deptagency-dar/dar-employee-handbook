@@ -9,9 +9,9 @@ const ArticleCards = (props: Props) => {
   return (
       <div className="container my-12 mx-auto px-4 md:px-12">
         <h1 className="my-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">Last articles</h1>
-        <div className="-mx-1 flex flex-wrap lg:-mx-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
           {articles.map((article) => (
-            <div key={article.title} className="my-1 px-1 w-full lg:w-1/2 lg:my-4 lg:px-4 xl:w-1/3">
+            <div key={article.title} className="w-full">
               <ArticleCard {...article} />
             </div>
           ))}

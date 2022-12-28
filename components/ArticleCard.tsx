@@ -2,6 +2,7 @@ import Image from "next/image";
 import stroopwafel from "@images/stroopwafel.jpeg";
 import { formatPublishDate } from "helpers/utils";
 import Link from "next/link";
+import AuthorImage from "./AuthorImage";
 
 export interface IArticle {
   title: string;
@@ -10,10 +11,12 @@ export interface IArticle {
   author: string;
   publishDate: Date;
   imageUrl?: string;
-  authorImageUrl?: string;  
+  authorImageUrl?: string;
 }
 
 type Props = IArticle;
+
+
 
 const ArticleCard = (props: Props) => {
   const {
@@ -22,38 +25,37 @@ const ArticleCard = (props: Props) => {
     author,
     publishDate,
     imageUrl,
-    url
+    url,
+    authorImageUrl,
   } = props;
 
   return (
-    <div className="w-full max-w-sm rounded-lg shadow-lg h-full">
+    <div className="h-full w-full max-w-md rounded-lg shadow-md hover:shadow-xl">
       <Link href={url}>
         <div
           className="h-48 flex-none overflow-hidden bg-cover text-center"
           style={{ backgroundImage: `url(${imageUrl || stroopwafel.src})` }}
-          title="Woman holding a mug"
+          title={title}
         />
       </Link>
-      <div className="flex flex-col justify-between p-4 leading-normal h-auto">
+      <div className="flex h-auto flex-col justify-between p-4 leading-normal">
         <div className="mb-8">
           <Link href={url}>
-            <div className="mb-2 text-xl font-bold text-gray-900 line-clamp-1 text-ellipsis overflow-hidden hover:underline">
+            <div className="mb-2 overflow-hidden text-ellipsis text-xl font-bold text-gray-900 line-clamp-1 hover:underline">
               {title}
             </div>
           </Link>
-          <p className="text-base text-gray-700 line-clamp-4 text-ellipsis overflow-hidden">
+          <p className="overflow-hidden text-ellipsis text-base text-gray-700 line-clamp-4">
             {description}
           </p>
         </div>
         <div className="flex items-center">
-          <img
-            className="mr-4 h-10 w-10 rounded-full"
-            src={imageUrl || stroopwafel.src}
-            alt="Avatar of Jonathan Reinink"
-          />
+         <AuthorImage name={author} image={authorImageUrl} />
           <div className="text-sm">
             <p className="leading-none text-gray-900">{author}</p>
-            <p className="text-gray-600">{formatPublishDate(publishDate || new Date())}</p>
+            <p className="text-gray-600">
+              {formatPublishDate(publishDate || new Date())}
+            </p>
           </div>
         </div>
       </div>

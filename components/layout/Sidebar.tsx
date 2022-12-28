@@ -19,13 +19,13 @@ interface NavItemProps {
 
 const NavItem = ({ children }: NavItemProps) => {
   return (
-    <li className="font-semibold tracking-normal text-slate-800 leading-tight py-1">{children}</li>
+    <li className="ml-2 font-semibold tracking-normal text-slate-800 leading-tight py-1 hover:underline">{children}</li>
   );
 };
 
 const Sidebar = ({ navigation }: SidebarProps) => {
   return (
-    <nav className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-12 py-12 shadow-lg">
+    <nav className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-4 py-8 shadow-lg">
       <div>
         <PrismicLink href="/">
           <div className="mb-20 flex">
@@ -33,15 +33,15 @@ const Sidebar = ({ navigation }: SidebarProps) => {
             🇦🇷
           </div>
         </PrismicLink>
-        <div className="list-none">
+        <ul className="list-none">
           {navigation.data?.links.map((item) => (
             <NavItem key={prismicH.asText(item.label)}>
-              <PrismicLink field={item.link}>
+              <PrismicLink field={item.link} >
                 <PrismicText field={item.label} />
               </PrismicLink>
             </NavItem>
           ))}
-        </div>
+        </ul>
       </div>
       <div>
         <Button className="w-full">
