@@ -3,11 +3,11 @@ import { useMemo, useState } from "react";
 
 interface Props {
   name: string;
-  image?: string;
+  image?: string | null;
 }
 
 const AuthorImage = ({ name, image }: Props) => {
-  const color = useMemo(() => getRandomColor(), [name]);
+  const [color] = useState(() => getRandomColor());
 
   let names: string[] = [];
   if (name) {

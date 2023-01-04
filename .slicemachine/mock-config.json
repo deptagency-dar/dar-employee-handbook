@@ -65,7 +65,9 @@
       }
     },
     "post": {},
-    "author": {}
+    "author": {},
+    "homepage": {},
+    "menu": {}
   },
   "slices": {
     "Text": {
@@ -118,6 +120,17 @@
       "default": {
         "primary": {}
       }
-    }
+    },
+    "Menu": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "MenuFirstLevel": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "MenuSecondLevel": {}
   }
 }

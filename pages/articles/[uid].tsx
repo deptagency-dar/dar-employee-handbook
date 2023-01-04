@@ -15,7 +15,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const Article = ({ article, navigation, settings }: ArticleProps) => {
+const Article = ({ article, navigation, menu, settings }: ArticleProps) => {
   const date = prismicH.asDate(
     (article.data.publishDate || article.first_publication_date) as `${number}-${number}-${number}`
   );
@@ -28,7 +28,7 @@ const Article = ({ article, navigation, settings }: ArticleProps) => {
           {prismicH.asText(settings.data.name)}
         </title>
       </Head>
-      <Layout navigation={navigation}>
+      <Layout navigation={navigation} menu={menu}>
         <article>
           <div className="flex flex-col items-center pt-12">
             <div className="max-w-2xl pb-0">
@@ -71,6 +71,7 @@ export async function getStaticProps({ params, previewData }: GetStaticPropsCont
     ],
   });
   const navigation = await client.getSingle("navigation");
+  const menu = await client.getSingle("menu");
   const settings = await client.getSingle("settings");
 
   return {
@@ -79,6 +80,7 @@ export async function getStaticProps({ params, previewData }: GetStaticPropsCont
       latestArticles,
       navigation,
       settings,
+      menu
     },
   };
 }

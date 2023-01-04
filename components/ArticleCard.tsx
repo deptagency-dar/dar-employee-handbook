@@ -9,25 +9,25 @@ export interface IArticle {
   description: string;
   url: string;
   author: string;
-  publishDate: Date;
-  imageUrl?: string;
-  authorImageUrl?: string;
+  publishDateStr: string | null;
+  imageUrl: string | null;
+  authorImageUrl: string | null;
 }
 
 type Props = IArticle;
-
-
 
 const ArticleCard = (props: Props) => {
   const {
     title,
     description,
     author,
-    publishDate,
+    publishDateStr,
     imageUrl,
     url,
     authorImageUrl,
   } = props;
+
+  const publishDate = !!publishDateStr ? new Date(publishDateStr) : new Date();
 
   return (
     <div className="h-full w-full max-w-md rounded-lg shadow-md hover:shadow-xl">
@@ -54,7 +54,7 @@ const ArticleCard = (props: Props) => {
           <div className="text-sm">
             <p className="leading-none text-gray-900">{author}</p>
             <p className="text-gray-600">
-              {formatPublishDate(publishDate || new Date())}
+              {formatPublishDate(publishDate)}
             </p>
           </div>
         </div>

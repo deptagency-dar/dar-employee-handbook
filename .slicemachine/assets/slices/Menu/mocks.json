@@ -1,0 +1,23 @@
+[
+  {
+    "variation": "default",
+    "version": "sktwi1xtmkfgx8626",
+    "items": [
+      {
+        "sub_label": "congress",
+        "sub_link": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      }
+    ],
+    "primary": {
+      "link": {
+        "link_type": "Web",
+        "url": "http://google.com"
+      },
+      "label": "tail"
+    },
+    "slice_type": "menu"
+  }
+]

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import deptLogo from "@images/dept-logo.svg";
-import * as prismicH from "@prismicio/helpers";
 import { Button } from "@components/Button";
-import { PrismicLink, PrismicText } from "@prismicio/react";
-import { NavigationDocument } from "types/types.generated";
+import { PrismicLink } from "@prismicio/react";
+import { NavigationDocument, MenuDocument } from "types/types.generated";
+import SidebarMenu from "./SidebarMenu";
 
 export interface SidebarItem {
   title: string;
@@ -11,6 +11,7 @@ export interface SidebarItem {
 }
 export interface SidebarProps {
   navigation: NavigationDocument;
+  menu: MenuDocument;
 }
 
 interface NavItemProps {
@@ -23,7 +24,7 @@ const NavItem = ({ children }: NavItemProps) => {
   );
 };
 
-const Sidebar = ({ navigation }: SidebarProps) => {
+const Sidebar = ({ navigation, menu }: SidebarProps) => {
   return (
     <nav className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-4 py-8 shadow-lg">
       <div>
@@ -33,15 +34,7 @@ const Sidebar = ({ navigation }: SidebarProps) => {
             🇦🇷
           </div>
         </PrismicLink>
-        <ul className="list-none">
-          {navigation.data?.links.map((item) => (
-            <NavItem key={prismicH.asText(item.label)}>
-              <PrismicLink field={item.link} >
-                <PrismicText field={item.label} />
-              </PrismicLink>
-            </NavItem>
-          ))}
-        </ul>
+        <SidebarMenu menu={menu} />        
       </div>
       <div>
         <Button className="w-full">
