@@ -29,12 +29,13 @@ interface NavItemProps {
 const NavLink = ({ label, link, currentSlug }: NavLinkProps) => {
   return (
     <li
-      className="m-1 flex w-full items-center whitespace-nowrap rounded-lg p-2 pl-5 text-sm font-normal text-gray-900 transition duration-75 hover:bg-slate-50"
+      className="my-1 flex w-full items-center whitespace-nowrap rounded-lg p-2 pl-5 text-sm font-normal text-gray-900 transition duration-75 hover:bg-slate-50"
       style={
         currentSlug === link.uid
           ? { backgroundColor: "rgb(248 250 252)" }
           : undefined
       }
+      title={label}
     >
       <div className="block w-full">
         <PrismicLink field={link}>
@@ -59,7 +60,7 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
       ) : (
         <button
           type="button"
-          className="group flex w-full items-center rounded-lg p-2 text-sm font-normal text-gray-900 transition duration-75 hover:bg-slate-50"
+          className="group flex w-full items-center rounded-lg p-2 text-sm font-normal text-slate-900 transition duration-75 hover:bg-slate-50"
           onClick={() => setShowSubItems(!showSubItems)}
         >
           {showSubItems ? <OpenedChevronIcon /> : <ClosedChevronIcon />}
@@ -73,7 +74,7 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
       )}
 
       {showSubItems && (
-        <ul className="list-none">
+        <ul className="list-none pl-2">
           {subitems.map((subitem) => (
             <NavLink
               key={subitem.sub_label}
