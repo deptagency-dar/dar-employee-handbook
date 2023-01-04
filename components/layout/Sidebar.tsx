@@ -2,29 +2,9 @@ import Image from "next/image";
 import deptLogo from "@images/dept-logo.svg";
 import { Button } from "@components/Button";
 import { PrismicLink } from "@prismicio/react";
-import { NavigationDocument, MenuDocument } from "types/types.generated";
 import SidebarMenu from "./SidebarMenu";
 
-export interface SidebarItem {
-  title: string;
-  href: string;
-}
-export interface SidebarProps {
-  navigation: NavigationDocument;
-  menu: MenuDocument;
-}
-
-interface NavItemProps {
-  children: React.ReactNode;
-}
-
-const NavItem = ({ children }: NavItemProps) => {
-  return (
-    <li className="ml-2 font-semibold tracking-normal text-slate-800 leading-tight py-1 hover:underline">{children}</li>
-  );
-};
-
-const Sidebar = ({ navigation, menu }: SidebarProps) => {
+const Sidebar = () => {
   return (
     <nav className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-4 py-8 shadow-lg">
       <div>
@@ -34,7 +14,7 @@ const Sidebar = ({ navigation, menu }: SidebarProps) => {
             🇦🇷
           </div>
         </PrismicLink>
-        <SidebarMenu menu={menu} />        
+        <SidebarMenu />        
       </div>
       <div>
         <Button className="w-full">

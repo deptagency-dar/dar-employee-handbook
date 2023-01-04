@@ -1,4 +1,3 @@
-import Image from "next/image";
 import stroopwafel from "@images/stroopwafel.jpeg";
 import { formatPublishDate } from "helpers/utils";
 import Link from "next/link";

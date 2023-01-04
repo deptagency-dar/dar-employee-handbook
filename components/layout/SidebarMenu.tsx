@@ -1,18 +1,11 @@
 import { PrismicLink } from "@prismicio/react";
 import { useState } from "react";
-import {
-  MenuDocument,
-  MenuSlice,
-  MenuSliceDefaultItem,
-} from "types/types.generated";
+import { MenuSlice, MenuSliceDefaultItem } from "types/types.generated";
 import { useRouter } from "next/router";
 import { FilledContentRelationshipField } from "@prismicio/types";
 import ClosedChevronIcon from "../../icons/ChevronRightIcon";
 import OpenedChevronIcon from "../../icons/ChevronDownIcon";
-
-interface Props {
-  menu: MenuDocument;
-}
+import { useLayoutContext } from "@lib/layoutProvider";
 
 interface NavLinkProps {
   label: string;
@@ -64,10 +57,7 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
           onClick={() => setShowSubItems(!showSubItems)}
         >
           {showSubItems ? <OpenedChevronIcon /> : <ClosedChevronIcon />}
-          <span
-            className="flex-1 whitespace-nowrap text-left"
-            sidebar-toggle-item
-          >
+          <span className="flex-1 whitespace-nowrap text-left">
             {item.primary.label}
           </span>
         </button>
@@ -89,9 +79,12 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
   );
 };
 
-const SidebarMenu = ({ menu }: Props) => {
-  const firstLevelItems = menu.data.slices;
+const SidebarMenu = () => {
+  const { menuDocument } = useLayoutContext();
   const { query } = useRouter();
+  if (!menuDocument) return null;
+
+  const firstLevelItems = menuDocument.data.slices;
 
   return (
     <ul>
