@@ -59,10 +59,11 @@ async function getLastArticles(client: Client): Promise<IArticle[]> {
 export async function getStaticProps({ previewData }: GetStaticPropsContext) {
   const client = createClient({ previewData });
 
-  const latestArticles = await getLastArticles(client);
+  const [latestArticles, page] = await Promise.all([
+    getLastArticles(client),
+    client.getByUID("page", "home"),
 
-  const page = await client.getByUID("page", "home");
-  const navigation = await client.getSingle("navigation");
+  ]);
 
   return {
     props: {

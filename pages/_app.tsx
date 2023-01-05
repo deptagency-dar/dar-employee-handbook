@@ -8,11 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { repositoryName } from "../prismicio";
 import useLoadingPage from "@hooks/useLoadingPage";
-import SpinnerArea from "@components/SpinnerArea";
 
 import "../styles/globals.css";
 import LayoutProvider from "@lib/layoutProvider";
-import { Layout } from "@components/layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isLoading] = useLoadingPage();

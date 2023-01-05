@@ -1,0 +1,1 @@
+export default () => <div className="h-screen w-full flex justify-center items-center">404 | Not found</div>;
