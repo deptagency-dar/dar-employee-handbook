@@ -8,6 +8,10 @@ interface ILayoutContext {
   menuDocument: MenuDocument | null;
 }
 
+interface ILayoutResponse {
+  menu: MenuDocument
+};
+
 const LayoutContext = React.createContext<ILayoutContext>({
   menuDocument: null,
 });
@@ -15,11 +19,11 @@ const LayoutContext = React.createContext<ILayoutContext>({
 export const useLayoutContext = () => useContext(LayoutContext);
 
 const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
-  const fetcher: Fetcher<MenuDocument, string> = (...args) => fetch(...args).then(res => res.json());  
-  const { data } = useSWR<MenuDocument>('/api/layout', fetcher);
+  const fetcher: Fetcher<ILayoutResponse, string> = (...args) => fetch(...args).then(res => res.json());  
+  const { data } = useSWR<ILayoutResponse>('/api/layout', fetcher);
   
   return (
-    <LayoutContext.Provider value={{ menuDocument: data || null }}>
+    <LayoutContext.Provider value={{ menuDocument: data?.menu || null }}>
       <SpinnerArea>
         <Layout>
           {children}

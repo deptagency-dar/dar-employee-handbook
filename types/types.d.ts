@@ -5,3 +5,13 @@ export type ArticleWithAuthorDocument = ArticleDocument & {
     author: AuthorDocument;
   };
 };
+
+interface IMenuChildren {
+  items: IMenuItem[];
+}
+interface IMenuItem {
+  text: string;
+  url: string | null;
+};
+
+export type IMenuItemWithChildren = IMenuItem & IMenuChildren;

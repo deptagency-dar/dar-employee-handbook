@@ -7,7 +7,7 @@ const handler: NextApiHandler = async (_req, res) => {
 
   const menu = await client.getSingle("menu");
 
-  res.status(200).json(menu);
+  res.status(200).json({ menu: menu });
 };
 
 export default handler;

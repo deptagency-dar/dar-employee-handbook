@@ -87,16 +87,18 @@ const SidebarMenu = () => {
   const firstLevelItems = menuDocument.data.slices;
 
   return (
-    <ul>
-      {firstLevelItems.map((firstLevelItem) => (
-        <NavItem
-          key={firstLevelItem.primary.label}
-          item={firstLevelItem}
-          subitems={firstLevelItem.items}
-          currentSlug={query.uid as string}
-        />
-      ))}
-    </ul>
+    <nav>
+      <ul>
+        {firstLevelItems.map((firstLevelItem) => (
+          <NavItem
+            key={firstLevelItem.primary.label}
+            item={firstLevelItem}
+            subitems={firstLevelItem.items}
+            currentSlug={query.uid as string}
+          />
+        ))}
+      </ul>
+    </nav>
   );
 };
 

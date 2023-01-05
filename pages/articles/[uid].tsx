@@ -6,6 +6,8 @@ import { createClient } from "../../prismicio";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { ArticleWithAuthorDocument } from "types/types";
+import { AuthorDocument } from "types/types.generated";
+import AuthorInfo from "@components/AuthorInfo";
 
 type ArticleProps = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -15,7 +17,11 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const Article = ({ article, settings }: ArticleProps) => {
+const Article = ({ article }: ArticleProps) => {
+  const author = "data" in article.data.author ? (article.data.author as AuthorDocument).data : null;
+  
+  const authorName = author?.fullname;
+
   const date = prismicH.asDate(
     (article.data.publishDate ||
       article.first_publication_date) as `${number}-${number}-${number}`
@@ -25,8 +31,8 @@ const Article = ({ article, settings }: ArticleProps) => {
     <>
       <Head>
         <title>
-          {prismicH.asText(article.data.title)} |{" "}
-          {prismicH.asText(settings.data.name)}
+          {prismicH.asText(article.data.title)}
+          {!!authorName ? ` | ${authorName}` : ""}
         </title>
       </Head>
       <article>
@@ -36,11 +42,7 @@ const Article = ({ article, settings }: ArticleProps) => {
               <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
                 <PrismicText field={article.data.title} />
               </h1>
-              {!!date && (
-                <p className="font-serif italic tracking-tighter text-slate-500">
-                  {dateFormatter.format(date)}
-                </p>
-              )}
+              <AuthorInfo name={authorName || "Anonymous"} imageUrl={author?.image?.url || null} publishDate={date} />
             </div>
             <PrismicRichText field={article.data.content} />
           </div>
@@ -64,16 +66,17 @@ export async function getStaticProps({
 
   if (!params?.uid) return;
 
-  const article = await client.getByUID<ArticleWithAuthorDocument>("article", params.uid, {
-    fetchLinks: ["author.fullname", "author.image"],
-  });
+  const article = await client.getByUID<ArticleWithAuthorDocument>(
+    "article",
+    params.uid,
+    {
+      fetchLinks: ["author.fullname", "author.image"],
+    }
+  );
 
-  const settings = await client.getSingle("settings");
-  
   return {
     props: {
       article,
-      settings,
     },
   };
 }

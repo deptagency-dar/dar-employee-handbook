@@ -17,7 +17,7 @@ const Image = ({ slice }) => {
         )}
         {prismicH.isFilled.image(image) && (
           <div className="bg-gray-100 flex justify-center">
-            <PrismicNextImage field={image} sizes="100vw" className="w-full" style={{ width: 'auto', height: 300 }} />
+            <PrismicNextImage alt="" field={image} sizes="100vw" className="w-full" style={{ width: 'auto', height: 300 }} />
           </div>
         )}
       </figure>

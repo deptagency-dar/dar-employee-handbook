@@ -6,11 +6,11 @@ import SidebarMenu from "./SidebarMenu";
 
 const Sidebar = () => {
   return (
-    <nav className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-4 py-8 shadow-lg">
+    <aside className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-4 py-8 shadow-lg">
       <div>
         <PrismicLink href="/">
           <div className="mb-20 flex">
-            <Image className="w-2/3" src={deptLogo} alt="Dept" />
+            <Image className="w-2/3" src={deptLogo} alt="Dept" priority />
             🇦🇷
           </div>
         </PrismicLink>
@@ -23,7 +23,7 @@ const Sidebar = () => {
           </a>
         </Button>
       </div>
-    </nav>
+    </aside>
   );
 };
 

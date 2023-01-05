@@ -1,7 +1,6 @@
 import stroopwafel from "@images/stroopwafel.jpeg";
-import { formatPublishDate } from "helpers/utils";
 import Link from "next/link";
-import AuthorImage from "./AuthorImage";
+import AuthorInfo from "./AuthorInfo";
 
 export interface IArticle {
   title: string;
@@ -48,15 +47,11 @@ const ArticleCard = (props: Props) => {
             {description}
           </p>
         </div>
-        <div className="flex items-center">
-         <AuthorImage name={author} image={authorImageUrl} />
-          <div className="text-sm">
-            <p className="leading-none text-gray-900">{author}</p>
-            <p className="text-gray-600">
-              {formatPublishDate(publishDate)}
-            </p>
-          </div>
-        </div>
+        <AuthorInfo
+          name={author}
+          imageUrl={authorImageUrl}
+          publishDate={publishDate}
+        />
       </div>
     </div>
   );
