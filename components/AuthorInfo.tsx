@@ -3,8 +3,8 @@ import AuthorImage from "./AuthorImage";
 
 interface Props {
   name: string;
-  imageUrl: string | null;
-  publishDate: Date;
+  imageUrl?: string | null;
+  publishDate?: Date;
 }
 
 function AuthorInfo({ name, imageUrl, publishDate }: Props) {
@@ -13,7 +13,7 @@ function AuthorInfo({ name, imageUrl, publishDate }: Props) {
       <AuthorImage name={name} image={imageUrl} />
       <div className="text-sm">
         <p className="leading-none text-gray-900">{name}</p>
-        <p className="font-serif text-slate-500 italic">{formatPublishDate(publishDate)}</p>
+        {publishDate && <p className="font-serif text-slate-500 italic">{formatPublishDate(publishDate)}</p>}
       </div>
     </div>
   );

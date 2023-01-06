@@ -1,10 +1,13 @@
 import Image from "next/image";
 import deptLogo from "@images/dept-logo.svg";
-import { Button } from "@components/Button";
 import { PrismicLink } from "@prismicio/react";
 import SidebarMenu from "./SidebarMenu";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import UserInfo from "@components/UserInfo";
 
 const Sidebar = () => {
+  const { user } = useUser();
+  
   return (
     <aside className="l-0 t-0 fixed flex h-screen w-60 flex-col justify-between px-4 py-8 shadow-lg">
       <div>
@@ -16,12 +19,9 @@ const Sidebar = () => {
         </PrismicLink>
         <SidebarMenu />        
       </div>
+
       <div>
-        <Button className="w-full">
-          <a className="w-full text-center" href="/api/auth/logout">
-            Logout
-          </a>
-        </Button>
+        <UserInfo  />
       </div>
     </aside>
   );

@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.prismic.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
   },
   async rewrites() {

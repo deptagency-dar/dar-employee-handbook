@@ -13,7 +13,7 @@ import { Client } from "@prismicio/client";
 type IndexProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Index = ({ page, latestArticles }: IndexProps) => {
-  
+ 
   return (
     <>
       <Head>
