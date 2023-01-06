@@ -17,7 +17,8 @@
     "paths": {
       "@components/*": ["./components/*"],
       "@images/*": ["./public/images/*"],
-      "@lib/*": ["./lib/*"]
+      "@lib/*": ["./lib/*"],
+      "@hooks/*": ["./hooks/*"]
     },
     "incremental": true
   },
@@ -27,5 +28,5 @@
     "**/*.ts",
     "**/*.tsx",
     "components/WithPrivateRoutes.jsx"
-  ]
+, "prismicio.js"]
 }

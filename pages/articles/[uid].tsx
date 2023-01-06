@@ -4,6 +4,10 @@ import * as prismicH from "@prismicio/helpers";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import { Layout } from "@components/layout";
 import { createClient } from "../../prismicio";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { ParsedUrlQuery } from 'querystring';
+
+type ArticleProps = InferGetStaticPropsType<typeof getStaticProps>;
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
@@ -11,9 +15,9 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   year: "numeric",
 });
 
-const Article = ({ article, navigation, settings }) => {
+const Article = ({ article, navigation, settings }: ArticleProps) => {
   const date = prismicH.asDate(
-    article.data.publishDate || article.first_publication_date
+    (article.data.publishDate || article.first_publication_date) as `${number}-${number}-${number}`
   );
 
   return (
@@ -32,9 +36,11 @@ const Article = ({ article, navigation, settings }) => {
                 <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
                   <PrismicText field={article.data.title} />
                 </h1>
-                <p className="font-serif italic tracking-tighter text-slate-500">
-                  {dateFormatter.format(date)}
-                </p>
+                {!!date && (
+                  <p className="font-serif italic tracking-tighter text-slate-500">
+                    {dateFormatter.format(date)}
+                  </p>
+                )}
               </div>
               <PrismicRichText field={article.data.content} />
             </div>
@@ -47,8 +53,14 @@ const Article = ({ article, navigation, settings }) => {
 
 export default withPageAuthRequired(Article);
 
-export async function getStaticProps({ params, previewData }) {
+interface ArticleParams extends ParsedUrlQuery {
+  uid: string;
+}
+
+export async function getStaticProps({ params, previewData }: GetStaticPropsContext<ArticleParams>) {
   const client = createClient({ previewData });
+
+  if (!params?.uid) return;
 
   const article = await client.getByUID("article", params.uid);
   const latestArticles = await client.getAllByType("article", {
