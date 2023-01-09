@@ -12,38 +12,36 @@ function UserInfo() {
   return (
     <div className="relative">
       <Button
-        className="w-full"
+        className="w-full px-3"
         onClick={() => setShowChildren(!showChildren)}
         onBlur={() => setShowChildren(false)}
       >
+        
         {user.name ? (
-          <>
+          <div className="grid grid-cols-4 gap-2">
             {user.picture && (
               <div
-                style={{
-                  minWidth: 30,
-                  width: 30,
-                  height: 30,
-                  position: "relative",
-                }}
-                className="mr-2"
+                
+                className="col-span-1 w-8 h-8 relative"
               >
                 <Image
                   src={user.picture}
-                  alt=""
+                  alt={user.email || ""}
                   fill
                   className="rounded-full object-cover"
                 />
               </div>
             )}
 
-            <div className="text-xs">
-              <p className="text-start leading-none text-gray-900">
+            <div className={`text-xs self-center ${user.picture ? 'col-start-2 col-span-3' : 'col-span-4'}`}>
+              <p className="text-start leading-none text-gray-900 truncate block" title={user.name}>
                 {user.name}
               </p>
-              <p className="italic text-slate-500">{user.email}</p>
+              <p className="italic text-slate-500 truncate block" title={user.email || ""}>
+                {user.email}
+              </p>
             </div>
-          </>
+          </div>
         ) : (
           <p className="font-serif text-sm italic text-slate-500">
             {user.email}
