@@ -53,6 +53,17 @@ interface ArticleDocumentData {
      */
     content: prismicT.RichTextField;
     /**
+     * Author field in *Article*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article.author
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    author: prismicT.RelationField<"author">;
+    /**
      * Slice Zone field in *Article*
      *
      * - **Field Type**: Slice Zone
@@ -79,6 +90,82 @@ type ArticleDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice | Cont
  * @typeParam Lang - Language API ID of the document.
  */
 export type ArticleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ArticleDocumentData>, "article", Lang>;
+/** Content for Author documents */
+interface AuthorDocumentData {
+    /**
+     * image field in *Author*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: author.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * fullname field in *Author*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: author.fullname
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    fullname: prismicT.KeyTextField;
+}
+/**
+ * Author document from Prismic
+ *
+ * - **API ID**: `author`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AuthorDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AuthorDocumentData>, "author", Lang>;
+/** Content for Home Page documents */
+type HomepageDocumentData = Record<string, never>;
+/**
+ * Home Page document from Prismic
+ *
+ * - **API ID**: `homepage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomepageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
+/** Content for Menu documents */
+interface MenuDocumentData {
+    /**
+     * Slice Zone field in *Menu*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: menu.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<MenuDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Menu → Slice Zone*
+ *
+ */
+type MenuDocumentDataSlicesSlice = MenuSlice;
+/**
+ * Menu document from Prismic
+ *
+ * - **API ID**: `menu`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MenuDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<MenuDocumentData>, "menu", Lang>;
 /** Content for Navigation documents */
 interface NavigationDocumentData {
     /**
@@ -169,7 +256,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice | ContactFormSlice;
+type PageDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice | ContactFormSlice | MenuSlice;
 /**
  * Page document from Prismic
  *
@@ -248,7 +335,7 @@ interface SettingsDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, "settings", Lang>;
-export type AllDocumentTypes = ArticleDocument | NavigationDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes = ArticleDocument | AuthorDocument | HomepageDocument | MenuDocument | NavigationDocument | PageDocument | SettingsDocument;
 /**
  * Default variation for ContactForm Slice
  *
@@ -357,6 +444,156 @@ type ImageSliceVariation = ImageSliceDefault | ImageSliceWide;
  */
 export type ImageSlice = prismicT.SharedSlice<"image", ImageSliceVariation>;
 /**
+ * Primary content in Menu → Primary
+ *
+ */
+interface MenuSliceDefaultPrimary {
+    /**
+     * Link field in *Menu → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Enter link label...
+     * - **API ID Path**: menu.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+    /**
+     * Label field in *Menu → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Enter link label...
+     * - **API ID Path**: menu.primary.label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+}
+/**
+ * Item in Menu → Items
+ *
+ */
+export interface MenuSliceDefaultItem {
+    /**
+     * Sub Label field in *Menu → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: menu.items[].sub_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    sub_label: prismicT.KeyTextField;
+    /**
+     * Sub Link field in *Menu → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: menu.items[].sub_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    sub_link: prismicT.LinkField;
+}
+/**
+ * Default variation for Menu Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Menu`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<MenuSliceDefaultPrimary>, Simplify<MenuSliceDefaultItem>>;
+/**
+ * Slice variation for *Menu*
+ *
+ */
+type MenuSliceVariation = MenuSliceDefault;
+/**
+ * Menu Shared Slice
+ *
+ * - **API ID**: `menu`
+ * - **Description**: `Menu`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuSlice = prismicT.SharedSlice<"menu", MenuSliceVariation>;
+/**
+ * Primary content in MenuFirstLevel → Primary
+ *
+ */
+interface MenuFirstLevelSliceDefaultPrimary {
+    /**
+     * Nav Link field in *MenuFirstLevel → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: menu_first_level.primary.nav_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    nav_link: prismicT.LinkField;
+    /**
+     * Link Text field in *MenuFirstLevel → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Enter link label...
+     * - **API ID Path**: menu_first_level.primary.link_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    link_text: prismicT.KeyTextField;
+}
+/**
+ * Item in MenuFirstLevel → Items
+ *
+ */
+export interface MenuFirstLevelSliceDefaultItem {
+    /**
+     * Nav Link field in *MenuFirstLevel → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: menu_first_level.items[].nav_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    nav_link: prismicT.LinkField;
+    /**
+     * Link Text field in *MenuFirstLevel → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: menu_first_level.items[].link_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    link_text: prismicT.KeyTextField;
+}
+/**
+ * Default variation for MenuFirstLevel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `MenuFirstLevel`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuFirstLevelSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<MenuFirstLevelSliceDefaultPrimary>, Simplify<MenuFirstLevelSliceDefaultItem>>;
+/**
+ * Slice variation for *MenuFirstLevel*
+ *
+ */
+type MenuFirstLevelSliceVariation = MenuFirstLevelSliceDefault;
+/**
+ * MenuFirstLevel Shared Slice
+ *
+ * - **API ID**: `menu_first_level`
+ * - **Description**: `MenuFirstLevel`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MenuFirstLevelSlice = prismicT.SharedSlice<"menu_first_level", MenuFirstLevelSliceVariation>;
+/**
  * Primary content in Quote → Primary
  *
  */
@@ -449,6 +686,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, AuthorDocumentData, AuthorDocument, HomepageDocumentData, HomepageDocument, MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, SettingsDocumentData, SettingsDocument, AllDocumentTypes, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, MenuSliceDefaultPrimary, MenuSliceDefaultItem, MenuSliceDefault, MenuSliceVariation, MenuSlice, MenuFirstLevelSliceDefaultPrimary, MenuFirstLevelSliceDefaultItem, MenuFirstLevelSliceDefault, MenuFirstLevelSliceVariation, MenuFirstLevelSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice };
     }
 }

@@ -26,11 +26,13 @@
     "next": "^13.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-toastify": "^9.1.1"
+    "react-toastify": "^9.1.1",
+    "swr": "^2.0.0"
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/react": "18.0.25",
     "autoprefixer": "^10.4.13",
     "concurrently": "^7.5.0",

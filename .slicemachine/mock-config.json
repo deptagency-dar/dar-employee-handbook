@@ -25,15 +25,15 @@
       }
     },
     "article": {
-      "title": {
-        "config": {
-          "patternType": "HEADING",
-          "blocks": 1
-        }
-      },
       "content": {
         "config": {
           "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      },
+      "title": {
+        "config": {
+          "patternType": "HEADING",
           "blocks": 1
         }
       }
@@ -63,7 +63,11 @@
           "blocks": 1
         }
       }
-    }
+    },
+    "post": {},
+    "author": {},
+    "homepage": {},
+    "menu": {}
   },
   "slices": {
     "Text": {
@@ -116,6 +120,17 @@
       "default": {
         "primary": {}
       }
-    }
+    },
+    "Menu": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "MenuFirstLevel": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "MenuSecondLevel": {}
   }
 }

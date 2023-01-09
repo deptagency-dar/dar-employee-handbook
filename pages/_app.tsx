@@ -8,25 +8,23 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { repositoryName } from "../prismicio";
 import useLoadingPage from "@hooks/useLoadingPage";
-import SpinnerArea from '@components/SpinnerArea';
 
 import "../styles/globals.css";
-
+import LayoutProvider from "@lib/layoutProvider";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isLoading] = useLoadingPage();
 
   return (
     <UserProvider>
-      <PrismicProvider internalLinkComponent={props => <Link {...props} />}>
+      <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
         <PrismicPreview repositoryName={repositoryName}>
-          <SpinnerArea loading={isLoading}>
+          <LayoutProvider>
             <Component {...pageProps} />
-          </SpinnerArea>
+          </LayoutProvider>
         </PrismicPreview>
       </PrismicProvider>
       <ToastContainer />
-
     </UserProvider>
   );
 }

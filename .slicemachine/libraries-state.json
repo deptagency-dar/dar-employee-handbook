@@ -181,6 +181,176 @@
           }
         }
       },
+      "menu": {
+        "library": "slices",
+        "id": "menu",
+        "name": "Menu",
+        "description": "Menu",
+        "model": {
+          "id": "menu",
+          "type": "SharedSlice",
+          "name": "Menu",
+          "description": "Menu",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Menu",
+              "primary": {
+                "link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Link",
+                    "placeholder": "Enter link label...",
+                    "allowTargetBlank": false,
+                    "select": null
+                  }
+                },
+                "label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Label",
+                    "placeholder": "Enter link label..."
+                  }
+                }
+              },
+              "items": {
+                "sub_label": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Sub Label",
+                    "placeholder": ""
+                  }
+                },
+                "sub_link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Sub Link",
+                    "placeholder": "",
+                    "select": null
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "sub_label": "congress",
+                "sub_link": {
+                  "link_type": "Web",
+                  "url": "https://prismic.io"
+                }
+              }
+            ],
+            "primary": {
+              "link": {
+                "link_type": "Web",
+                "url": "http://google.com"
+              },
+              "label": "tail"
+            },
+            "slice_type": "menu"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
+      "menu_first_level": {
+        "library": "slices",
+        "id": "menu_first_level",
+        "name": "MenuFirstLevel",
+        "description": "MenuFirstLevel",
+        "model": {
+          "id": "menu_first_level",
+          "type": "SharedSlice",
+          "name": "MenuFirstLevel",
+          "description": "MenuFirstLevel",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "MenuFirstLevel",
+              "primary": {
+                "nav_link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Nav Link",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "select": null
+                  }
+                },
+                "link_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Link Text",
+                    "placeholder": "Enter link label..."
+                  }
+                }
+              },
+              "items": {
+                "nav_link": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Nav Link",
+                    "placeholder": "",
+                    "select": null
+                  }
+                },
+                "link_text": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Link Text",
+                    "placeholder": ""
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {
+                "nav_link": {
+                  "link_type": "Web",
+                  "url": "https://prismic.io"
+                },
+                "link_text": "dull"
+              }
+            ],
+            "primary": {
+              "nav_link": {
+                "link_type": "Web",
+                "url": "https://prismic.io"
+              },
+              "link_text": "inside"
+            },
+            "slice_type": "menu_first_level"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      },
       "quote": {
         "library": "slices",
         "id": "quote",
