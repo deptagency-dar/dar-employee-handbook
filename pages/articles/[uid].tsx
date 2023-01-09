@@ -44,7 +44,9 @@ const Article = ({ article }: ArticleProps) => {
               </h1>
               <AuthorInfo name={authorName || "Anonymous"} imageUrl={author?.image?.url || null} publishDate={date} />
             </div>
-            <PrismicRichText field={article.data.content} />
+            <div className="article-content">
+              <PrismicRichText field={article.data.content} />
+            </div>
           </div>
         </div>
       </article>

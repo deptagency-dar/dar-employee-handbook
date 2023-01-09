@@ -1,0 +1,42 @@
+.article-content {
+  font-family: -apple-system,BlinkMacSystemFont,Hind Vadodara,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+    background: none;
+    font-size: 14px;
+    line-height: 26px;
+    color: #364655;
+    outline: 0;
+    cursor: text;
+    position: relative;
+    min-height: 20px;
+    counter-reset: item;
+}
+
+.article-content p {
+  margin-bottom: 10px;
+  line-height: 26px;
+  font-size: 14px;
+  min-height: 26px;
+}
+
+.article-content ul {
+  list-style: disc;
+  margin: 22px;
+}
+
+.article-content h1 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.article-content h2 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 24px;
+}
+
+.article-content a {
+  color: #007bdb;
+  text-decoration: underline;
+}
