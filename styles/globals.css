@@ -2,4 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./prismic-content.css";
+@import "./article-content.css";
