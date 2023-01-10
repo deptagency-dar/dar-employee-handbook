@@ -16,14 +16,10 @@ function UserInfo() {
         onClick={() => setShowChildren(!showChildren)}
         onBlur={() => setShowChildren(false)}
       >
-        
         {user.name ? (
-          <div className="grid grid-cols-4 gap-2">
+          <div className="inline-flex items-center">
             {user.picture && (
-              <div
-                
-                className="col-span-1 w-8 h-8 relative"
-              >
+              <div className="relative mr-2 h-8 w-8">
                 <Image
                   src={user.picture}
                   alt={user.email || ""}
@@ -33,11 +29,17 @@ function UserInfo() {
               </div>
             )}
 
-            <div className={`text-xs self-center ${user.picture ? 'col-start-2 col-span-3' : 'col-span-4'}`}>
-              <p className="text-start leading-none text-gray-900 truncate block" title={user.name}>
+            <div className="w-36 text-xs flex flex-col items-start">
+              <p
+                className="block truncate text-start leading-none text-gray-900"
+                title={user.name}
+              >
                 {user.name}
               </p>
-              <p className="italic text-slate-500 truncate block" title={user.email || ""}>
+              <p
+                className="block truncate italic text-slate-500"
+                title={user.email || ""}
+              >
                 {user.email}
               </p>
             </div>

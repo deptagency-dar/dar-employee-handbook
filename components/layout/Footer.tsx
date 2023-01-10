@@ -1,10 +1,10 @@
 export const Footer = () => (
-  <div className="bg-white">
-    <div className="mx-auto max-w-screen-xl py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+  <div className="bg-white px-10">
+    <div className="flex flex-col items-center mx-auto max-w-screen-xl py-8 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
       <div className="flex justify-center md:order-2">
         <a
           href="https://www.instagram.com/deptagency/"
-          className="ml-6 text-gray-400 hover:text-gray-500"
+          className="w-10 flex justify-center text-gray-400 hover:text-gray-500"
         >
           <span className="sr-only">Instagram</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -17,7 +17,7 @@ export const Footer = () => (
         </a>
         <a
           href="https://github.com/deptagency-dar/dar-employee-handbook"
-          className="ml-6 text-gray-400 hover:text-gray-500"
+          className="w-10 flex justify-center text-gray-400 hover:text-gray-500"
         >
           <span className="sr-only">GitHub</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -30,7 +30,7 @@ export const Footer = () => (
         </a>
         <a
           href="https://www.linkedin.com/company/deptagency/mycompany/"
-          className="ml-6 text-gray-400 hover:text-gray-500"
+          className="w-10 flex justify-center text-gray-400 hover:text-gray-500"
         >
           <span className="sr-only">LinkedIn</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 512 512">
