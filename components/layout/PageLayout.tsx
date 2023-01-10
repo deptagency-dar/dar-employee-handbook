@@ -12,7 +12,7 @@ export const Layout = ({ children }: Props) => {
     <div className="text-slate-700">
       <Sidebar />
       <div
-        className={`flex h-full min-h-full flex-col justify-between overflow-x-auto ${
+        className={`flex h-full min-h-screen flex-col justify-between overflow-x-auto ${
           sidebarOpen && "md:ml-60"
         }`}
       >
