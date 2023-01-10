@@ -1,5 +1,5 @@
 import stroopwafel from "@images/stroopwafel.jpeg";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import AuthorInfo from "./AuthorInfo";
 
 export interface IArticle {
@@ -25,24 +25,30 @@ const ArticleCard = (props: Props) => {
     authorImageUrl,
   } = props;
 
+  const router = useRouter();
+
   const publishDate = !!publishDateStr ? new Date(publishDateStr) : new Date();
 
+  const goToLink = () => {
+    router.push(url);
+  };
+
   return (
-    <div className="h-full w-full max-w-md rounded-lg shadow-md hover:shadow-xl">
-      <Link href={url}>
-        <div
-          className="h-48 flex-none overflow-hidden bg-cover text-center"
-          style={{ backgroundImage: `url(${imageUrl || stroopwafel.src})` }}
-          title={title}
-        />
-      </Link>
+    <div
+      className="h-full w-full rounded-lg shadow-md hover:cursor-pointer hover:shadow-xl"
+      onClick={() => goToLink()}
+    >
+      <div
+        className="h-48 flex-none overflow-hidden bg-cover text-center"
+        style={{ backgroundImage: `url(${imageUrl || stroopwafel.src})` }}
+        title={title}
+      />
       <div className="flex h-auto flex-col justify-between p-4 leading-normal">
         <div className="mb-8">
-          <Link href={url}>
-            <div className="mb-2 overflow-hidden text-ellipsis text-xl font-bold text-gray-900 line-clamp-1 hover:underline">
-              {title}
-            </div>
-          </Link>
+          <div className="mb-2 overflow-hidden text-ellipsis text-xl font-bold text-gray-900 line-clamp-1 hover:underline">
+            {title}
+          </div>
+
           <p className="overflow-hidden text-ellipsis text-base text-gray-700 line-clamp-4">
             {description}
           </p>
