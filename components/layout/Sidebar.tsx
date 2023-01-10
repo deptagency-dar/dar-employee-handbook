@@ -12,9 +12,14 @@ const Sidebar = () => {
 
   return (
     <aside>
-      <div className={`md:hidden fixed top-0 left-0 right-0 w-full h-full bg-white/50 backdrop-blur-sm ${!open ? 'hidden' : ''}`} />
       <div
-        className={`l-0 t-0 fixed z-10 flex h-full flex-col justify-between bg-white px-4 py-8 shadow-lg transition-width duration-75 ${
+        className={`fixed top-0 left-0 right-0 h-full w-full bg-white/50 backdrop-blur-sm md:hidden ${
+          !open ? "hidden" : ""
+        }`}
+        onClick={() => setOpen(false)}
+      />
+      <div
+        className={`l-0 t-0 transition-width fixed z-10 flex h-full flex-col justify-between bg-white px-4 py-8 shadow-lg duration-75 ${
           open ? "w-60" : "w-0"
         }`}
       >
