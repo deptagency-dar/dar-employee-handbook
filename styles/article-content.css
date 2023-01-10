@@ -6,7 +6,6 @@
     color: #364655;
     outline: 0;
     cursor: text;
-    position: relative;
     min-height: 20px;
     counter-reset: item;
 }

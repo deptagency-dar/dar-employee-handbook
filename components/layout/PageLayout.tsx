@@ -1,3 +1,4 @@
+import { useLayoutContext } from "@lib/layoutProvider";
 import { Footer } from "./Footer";
 import Sidebar from "./Sidebar";
 interface Props {
@@ -5,12 +6,17 @@ interface Props {
 }
 
 export const Layout = ({ children }: Props) => {
-
+  const { sidebarState } = useLayoutContext();
+  const { open: sidebarOpen } = sidebarState;
   return (
     <div className="text-slate-700">
       <Sidebar />
-      <div className="ml-60 min-h-screen flex flex-col justify-between">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+      <div
+        className={`flex h-full min-h-full flex-col justify-between overflow-x-auto ${
+          sidebarOpen && "md:ml-60"
+        }`}
+      >
+        <div className="container mx-auto px-10">{children}</div>
         <Footer />
       </div>
     </div>
