@@ -22,7 +22,7 @@ interface NavItemProps {
 const NavLink = ({ label, link, currentSlug }: NavLinkProps) => {
   return (
     <li
-      className="my-1 flex w-full items-center whitespace-nowrap rounded-lg p-2 pl-5 text-sm font-normal text-gray-900 transition duration-75 hover:bg-slate-50"
+      className="my-1 flex w-full items-center whitespace-nowrap rounded-lg p-2 pl-5 text-sm font-normal text-gray-900 hover:bg-slate-50"
       style={
         currentSlug === link.uid
           ? { backgroundColor: "rgb(248 250 252)" }
@@ -54,7 +54,7 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
         <li>
           <button
             type="button"
-            className="group flex w-full items-center rounded-lg p-2 text-sm font-normal text-slate-900 transition duration-75 hover:bg-slate-50"
+            className="group flex w-full items-center rounded-lg p-2 text-sm font-normal text-slate-900 hover:bg-slate-50"
             onClick={() => setShowSubItems(!showSubItems)}
           >
             {showSubItems ? <OpenedChevronIcon /> : <ClosedChevronIcon />}
@@ -62,21 +62,18 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
               {item.primary.label}
             </span>
           </button>
-        </li>
-      )}
-
-      {showSubItems && (
-        <li>
-          <ul className="list-none pl-2">
-            {subitems.map((subitem) => (
-              <NavLink
-                key={subitem.sub_label}
-                label={subitem.sub_label as string}
-                link={subitem.sub_link as FilledContentRelationshipField}
-                currentSlug={currentSlug}
-              />
-            ))}
-          </ul>
+          {showSubItems && (
+            <ul className="list-none pl-2">
+              {subitems.map((subitem) => (
+                <NavLink
+                  key={subitem.sub_label}
+                  label={subitem.sub_label as string}
+                  link={subitem.sub_link as FilledContentRelationshipField}
+                  currentSlug={currentSlug}
+                />
+              ))}
+            </ul>
+          )}
         </li>
       )}
     </>

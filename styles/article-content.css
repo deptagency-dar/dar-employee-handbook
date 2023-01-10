@@ -40,6 +40,12 @@
   font-size: 24px;
 }
 
+.article-content h3 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 22px;
+}
+
 .article-content a {
   color: #007bdb;
   text-decoration: underline;
