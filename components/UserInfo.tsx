@@ -29,15 +29,15 @@ function UserInfo() {
               </div>
             )}
 
-            <div className="w-36 text-xs flex flex-col items-start">
+            <div className="w-36 text-xs flex flex-col items-start text-start">
               <p
-                className="block truncate text-start leading-none text-gray-900"
+                className="w-full truncate text-start leading-none text-gray-900"
                 title={user.name}
               >
                 {user.name}
               </p>
               <p
-                className="block truncate italic text-slate-500"
+                className="w-full truncate italic text-slate-500"
                 title={user.email || ""}
               >
                 {user.email}
