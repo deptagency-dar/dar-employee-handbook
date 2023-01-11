@@ -22,7 +22,7 @@ interface NavItemProps {
 const NavLink = ({ label, link, currentSlug }: NavLinkProps) => {
   return (
     <li
-      className="my-1 flex w-full items-center whitespace-nowrap rounded-lg p-2 pl-5 text-sm font-normal text-gray-900 transition duration-75 hover:bg-slate-50"
+      className="my-1 flex w-full items-center whitespace-nowrap rounded-lg p-2 pl-5 text-sm font-normal text-gray-900 hover:bg-slate-50"
       style={
         currentSlug === link.uid
           ? { backgroundColor: "rgb(248 250 252)" }
@@ -43,7 +43,7 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
   const [showSubItems, setShowSubItems] = useState(false);
 
   return (
-    <li>
+    <>
       {"url" in item.primary.link ? (
         <NavLink
           label={item.primary.label as string}
@@ -51,31 +51,32 @@ const NavItem = ({ item, subitems, currentSlug }: NavItemProps) => {
           currentSlug={currentSlug}
         />
       ) : (
-        <button
-          type="button"
-          className="group flex w-full items-center rounded-lg p-2 text-sm font-normal text-slate-900 transition duration-75 hover:bg-slate-50"
-          onClick={() => setShowSubItems(!showSubItems)}
-        >
-          {showSubItems ? <OpenedChevronIcon /> : <ClosedChevronIcon />}
-          <span className="flex-1 whitespace-nowrap text-left">
-            {item.primary.label}
-          </span>
-        </button>
+        <li>
+          <button
+            type="button"
+            className="group flex w-full items-center rounded-lg p-2 text-sm font-normal text-slate-900 hover:bg-slate-50"
+            onClick={() => setShowSubItems(!showSubItems)}
+          >
+            {showSubItems ? <OpenedChevronIcon /> : <ClosedChevronIcon />}
+            <span className="flex-1 whitespace-nowrap text-left">
+              {item.primary.label}
+            </span>
+          </button>
+          {showSubItems && (
+            <ul className="list-none pl-2">
+              {subitems.map((subitem) => (
+                <NavLink
+                  key={subitem.sub_label}
+                  label={subitem.sub_label as string}
+                  link={subitem.sub_link as FilledContentRelationshipField}
+                  currentSlug={currentSlug}
+                />
+              ))}
+            </ul>
+          )}
+        </li>
       )}
-
-      {showSubItems && (
-        <ul className="list-none pl-2">
-          {subitems.map((subitem) => (
-            <NavLink
-              key={subitem.sub_label}
-              label={subitem.sub_label as string}
-              link={subitem.sub_link as FilledContentRelationshipField}
-              currentSlug={currentSlug}
-            />
-          ))}
-        </ul>
-      )}
-    </li>
+    </>
   );
 };
 

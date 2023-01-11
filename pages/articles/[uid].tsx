@@ -37,7 +37,7 @@ const Article = ({ article }: ArticleProps) => {
       </Head>
       <article>
         <div className="flex flex-col items-center pt-12">
-          <div className="max-w-2xl pb-0">
+          <div className="w-full max-w-2xl pb-0">
             <div className="mb-12">
               <h1 className="mb-3 text-3xl font-semibold tracking-tighter text-slate-800 md:text-4xl">
                 <PrismicText field={article.data.title} />
